@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const ammoSchema = new mongoose.Schema({
     caliber: {type: String, required: true},
-    cartridge: {type: String, required: true},
+    cartridge: {type: String, required: true, unique: true},
     damage: {type: Number, required: true},
     penpower: {type: Number, required: true},
     velocity: {type: Number, required: true},

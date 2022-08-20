@@ -1,14 +1,23 @@
 const express = require('express');
 const router = express.Router();
 const Ammo = require('../models/ammo.js')
+// const seed = require('../models/seed.js')
 
 router.get('/', (req, res) => {
     Ammo.find({}, (err, allAmmo) => {
-        res.render('index.ejs',{
-            ammo: allAmmo
-        });
+        // res.render('index.ejs',{
+        //     ammo: allAmmo
+        // });
+        res.send(allAmmo)
     });
 });
+
+// router.get('/seed', (req, res) => {
+//     Ammo.create(seed),(err, createdAmmo) => {
+//         console.log(createdAmmo)
+//         res.redirect('/ammo')
+//     }
+// })
 
 router.get('/:caliber', (req, res) => {
     Ammo.find(req.params.caliber, (err, allAmmo) => {
@@ -22,7 +31,7 @@ router.get("/new", (req, res) => {
     res.render('new.ejs');
 });
 
-router.get('caliber/:id', (req, res)=>{
+router.get('/:caliber/:id', (req, res)=>{
     Ammo.findById(req.params.id, (err, foundAmmo)=>{
         res.render('show.ejs', {
             ammo:foundAmmo
@@ -30,7 +39,7 @@ router.get('caliber/:id', (req, res)=>{
     });
 });
 
-router.get('caliber/:id/edit', authRequired, (req, res) => {
+router.get('/:caliber/:id/edit', (req, res) => {
     Ammo.findById(req.params.id, (err, foundAmmo) => {
         console.log(foundAmmo)
         res.render('edit.ejs', {
@@ -39,7 +48,7 @@ router.get('caliber/:id/edit', authRequired, (req, res) => {
     })
 })
 
-router.put('caliber/:id', (req, res) => {
+router.put('/:caliber/:id', (req, res) => {
     if(req.body.purchasable === 'on') {
         req.body.purchasable = true;
     } else {
@@ -66,16 +75,16 @@ router.post('/', (req, res) => {
             console.log("This happened:", err)
             res.send(err)
         } else {
-            res.redirect('/ammo/caliber')
+            res.redirect('/ammo/:caliber')
             console.log(createdAmmo)
         }
     });
     
 });
 
-router.delete('caliber/:id', (req, res) => {
+router.delete('/:caliber/:id', (req, res) => {
     Ammo.findByIdAndRemove(req.params.id, (err, data) => {
-        res.redirect('/ammo/caliber');
+        res.redirect('/ammo/:caliber');
     });
 });
 
