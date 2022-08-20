@@ -1,2 +1,12 @@
 <%-include('./partials/header.ejs')%>
+<h1>Caliber List</h1>
+<% for(let i = 0; i < calArr.length; i++) { %>
+    <li>
+        <a href="/ammo/<%=calArr[i].caliber%>"><%=calArr[i].caliber%></a>
+        <%for(let j = 0; j < calArr[i].bullets.length; j++){%>
+            <div><%=calArr[i].bullets[j].cartridge%></div>
+            <%}%>
+    </li>
+<%}%>
+
 <%- include('./partials/footer.ejs') %>

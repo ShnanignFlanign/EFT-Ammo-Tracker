@@ -5,13 +5,39 @@ const Ammo = require('../models/ammo.js')
 
 router.get('/', (req, res) => {
     Ammo.find({}, (err, allAmmo) => {
-        // res.render('index.ejs',{
-        //     ammo: allAmmo
-        // });
-        res.send(allAmmo)
+        //array of caliber objects here, each with their own array of bullets. place each bullet in corresponding object's array of bullets
+        let calArr = [];
+        for(element of allAmmo){
+            console.log(element.caliber)
+            if(!calArr.includes({caliber: element.caliber, bullets:[]})){
+                calArr.push({caliber: element.caliber, bullets:[]});
+            }
+        }
+        for(let i = 0; i < calArr.length; i++) {
+            for(let j = 0; j < calArr.length; j++)
+            if (i!==j) {
+                if(calArr[i].caliber === calArr[j].caliber){
+                    calArr.splice(i, 1)
+                }
+            }
+        }
+        for(element of allAmmo){
+            for(let i = 0; i < calArr.length; i++){
+                if(element.caliber === calArr[i].caliber){
+                    calArr[i].bullets.push(element)
+                }
+            }
+        };
+        console.log("Caliber Array:",calArr)
+        res.render('index.ejs',{
+            calArr,
+            ammo:allAmmo
+        });
+        // res.send(allAmmo)
     });
 });
 
+//seeder that's uncommented as needed
 // router.get('/seed', (req, res) => {
 //     Ammo.create(seed),(err, createdAmmo) => {
 //         console.log(createdAmmo)
@@ -20,11 +46,13 @@ router.get('/', (req, res) => {
 // })
 
 router.get('/:caliber', (req, res) => {
-    Ammo.find(req.params.caliber, (err, allAmmo) => {
-        res.render('index.ejs',{
-            ammo: allAmmo
-        });
+    Ammo.find({caliber: req.params.caliber}, (err, allAmmo) => {
+        // res.render('index.ejs',{
+        //     ammo: allAmmo
+        // });
+        res.send(allAmmo)
     });
+
 });
 
 router.get("/new", (req, res) => {
