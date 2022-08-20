@@ -1,0 +1,11 @@
+<%-include('./partials/header.ejs')%>
+<h1><%=caliber%> Cartridges</h1>
+<ul class="list-group">
+    <%for(let i = 0; i < foundAmmo.length; i++) { %>
+
+    <li class="list-group-item"><%=foundAmmo[i].cartridge%>
+    <a href="/ammo/<%=foundAmmo[i].caliber%>/<%=foundAmmo[i].id%>">Stats</a>
+    </li>
+    <%}%>
+</ul>
+<%- include('./partials/footer.ejs') %>

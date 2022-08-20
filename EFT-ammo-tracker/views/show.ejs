@@ -1,4 +1,9 @@
 <%-include('./partials/header.ejs')%>
 <h1> <%=ammo.cartridge%></h1>
 <p><%=ammo.description%></p>
+<ul>
+    <div>Penetration Power: <%=ammo.penpower%></div>
+    <div>Damage: <%=ammo.damage%></div>
+    <div>Muzzle Velocity: <%=ammo.velocity%></div>
+</ul>
 <%- include('./partials/footer.ejs') %>

@@ -1,12 +1,15 @@
 <%-include('./partials/header.ejs')%>
 <h1>Caliber List</h1>
+<ul class="list-group">
 <% for(let i = 0; i < calArr.length; i++) { %>
-    <li>
+    <li class="list-group-item">
         <a href="/ammo/<%=calArr[i].caliber%>"><%=calArr[i].caliber%></a>
         <%for(let j = 0; j < calArr[i].bullets.length; j++){%>
-            <div><%=calArr[i].bullets[j].cartridge%></div>
+            <div><%=calArr[i].bullets[j].cartridge%>
+            <a href="/ammo/<%=calArr[i].caliber%>/<%=calArr[i].bullets[j].id%>">Stats</a>
+            </div>
             <%}%>
     </li>
 <%}%>
-
+</ul>
 <%- include('./partials/footer.ejs') %>

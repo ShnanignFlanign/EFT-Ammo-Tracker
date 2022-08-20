@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
                 }
             }
         };
-        console.log("Caliber Array:",calArr)
+        console.log("Caliber Array:",calArr[1].bullets)
         res.render('index.ejs',{
             calArr,
             ammo:allAmmo
@@ -46,11 +46,13 @@ router.get('/', (req, res) => {
 // })
 
 router.get('/:caliber', (req, res) => {
-    Ammo.find({caliber: req.params.caliber}, (err, allAmmo) => {
-        // res.render('index.ejs',{
-        //     ammo: allAmmo
-        // });
-        res.send(allAmmo)
+    Ammo.find({caliber: req.params.caliber}, (err, foundAmmo) => {
+        const caliber = req.params.caliber
+        res.render('caliber.ejs',{
+            foundAmmo,
+            caliber
+        });
+        // res.send(allAmmo)
     });
 
 });
