@@ -1,2 +1,39 @@
 <%-include('./partials/header.ejs')%>
+<h1>Edit <%=ammo.cartridge%> Stats</h1>
 <%- include('./partials/footer.ejs') %>
+<form action="/ammo/<%=ammo.caliber%>/<%=ammo.id%>?_method=PUT" method="POST">
+
+    <label for="caliber">Caliber</label>
+    <input type="text" name="caliber" id="caliber" value="<%=ammo.caliber%>">
+    
+    <label for="cartridge">Cartridge</label>
+    <input type="text" name="cartridge" id="cartridge" value="<%=ammo.cartridge%>">
+    
+    <label for="damage">Damage</label>
+    <input type="text" name="damage" id="damage" value="<%=ammo.damage%>">
+    
+    <label for="penpower">Penetration Power</label>
+    <input type="text" name="penpower" id="penpower" value="<%=ammo.penpower%>">
+    
+    <label for="velocity">Bullet Velocity</label>
+    <input type="text" name="velocity" id="velocity" value="<%=ammo.velocity%>">
+   
+    <label for="fragmentation">Fragmentation Chance</label>
+    <input type="text" name="fragmentation" id="fragmentation" value="<%=ammo.fragmentation%>">
+   
+    <label for="img">Image Link</label>
+    <input type="text" name="img" id="img" value="<%=ammo.img%>">
+   
+    <label for="description">Description</label>
+    <input type="textbox" name="description" id="description" value="<%=ammo.description%>">
+   
+    <label for="purchasable">Purchasable from Traders</label>
+    <input type="checkbox" name="purchasable" id="purchasable" 
+        <% if(ammo.purchasable === true){%>
+            checked
+        <%}%>
+    >
+
+    <input type="submit" value="Confirm Changes">
+
+</form>

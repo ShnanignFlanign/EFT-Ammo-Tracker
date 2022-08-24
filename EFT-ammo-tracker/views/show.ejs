@@ -1,9 +1,18 @@
 <%-include('./partials/header.ejs')%>
-<h1> <%=ammo.cartridge%></h1>
+<h1><%=ammo.caliber%> <%=ammo.cartridge%></h1>
+<img src="<%=ammo.img%>">
 <p><%=ammo.description%></p>
 <ul>
     <div>Penetration Power: <%=ammo.penpower%></div>
     <div>Damage: <%=ammo.damage%></div>
     <div>Muzzle Velocity: <%=ammo.velocity%></div>
+    <div>Fragmentation Chance: <%=ammo.fragmentation%>%</div>
+    <%if (ammo.purchasable === true) {%>
+        <div>This ammo is purchasable from traders.</div>
+    <%} else if (ammo.purchasable !== true){%>
+        <div>This ammo is not purchasable from traders.</div>
+    <%}%>
+    <a href="/ammo/<%=ammo.caliber%>/<%=ammo.id%>/edit">Edit</a>
 </ul>
+
 <%- include('./partials/footer.ejs') %>

@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
         //array of caliber objects here, each with their own array of bullets. place each bullet in corresponding object's array of bullets
         let calArr = [];
         for(element of allAmmo){
-            console.log(element.caliber)
+            // console.log(element.caliber)
             if(!calArr.includes({caliber: element.caliber, bullets:[]})){
                 calArr.push({caliber: element.caliber, bullets:[]});
             }
@@ -28,7 +28,6 @@ router.get('/', (req, res) => {
                 }
             }
         };
-        console.log("Caliber Array:",calArr[1].bullets)
         res.render('index.ejs',{
             calArr,
             ammo:allAmmo
@@ -45,6 +44,10 @@ router.get('/', (req, res) => {
 //     }
 // })
 
+router.get("/new", (req, res) => {
+    res.render('new.ejs');
+});
+
 router.get('/:caliber', (req, res) => {
     Ammo.find({caliber: req.params.caliber}, (err, foundAmmo) => {
         const caliber = req.params.caliber
@@ -57,9 +60,7 @@ router.get('/:caliber', (req, res) => {
 
 });
 
-router.get("/new", (req, res) => {
-    res.render('new.ejs');
-});
+
 
 router.get('/:caliber/:id', (req, res)=>{
     Ammo.findById(req.params.id, (err, foundAmmo)=>{
@@ -84,11 +85,11 @@ router.put('/:caliber/:id', (req, res) => {
     } else {
         req.body.purchasable = false;
     }
-    // console.log("req.body:", req.body)
-    // console.log("req.params.id:", req.params.id)
+    console.log("req.body:", req.body)
+    console.log("req.params.id:", req.params.id)
     Ammo.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, ammo) => {
         console.log(ammo)
-        res.redirect('/ammo/caliber');
+        res.redirect('/ammo');
     }) 
 })
 
