@@ -114,7 +114,7 @@ router.post('/', (req, res) => {
 
 router.delete('/:caliber/:id', (req, res) => {
     Ammo.findByIdAndRemove(req.params.id, (err, data) => {
-        res.redirect('/ammo/:caliber');
+        res.redirect('/ammo');
     });
 });
 
