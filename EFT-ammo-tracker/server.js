@@ -19,6 +19,10 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/', (req, res) => {
+    res.render('home.ejs')
+})
+
 app.use('/ammo', ammoCtrl)
 
 app.listen(3000, () => {

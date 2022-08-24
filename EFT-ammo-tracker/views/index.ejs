@@ -4,11 +4,15 @@
 <% for(let i = 0; i < calArr.length; i++) { %>
     <li class="list-group-item">
         <a href="/ammo/<%=calArr[i].caliber%>"><%=calArr[i].caliber%></a>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Cartridges</button>
+            <ul class="dropdown-menu">
         <%for(let j = 0; j < calArr[i].bullets.length; j++){%>
-            <div><%=calArr[i].bullets[j].cartridge%>
-            <a href="/ammo/<%=calArr[i].caliber%>/<%=calArr[i].bullets[j].id%>">Stats</a>
-            </div>
+                <li><a class="dropdown-item" href="/ammo/<%=calArr[i].caliber%>/<%=calArr[i].bullets[j].id%>"><%=calArr[i].bullets[j].cartridge%></a>
+                </li>
             <%}%>
+            </ul>
+        </div>
     </li>
 <%}%>
 </ul>

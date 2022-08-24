@@ -1,6 +1,6 @@
 <%-include('./partials/header.ejs')%>
 <h1>Edit <%=ammo.cartridge%> Stats</h1>
-<%- include('./partials/footer.ejs') %>
+
 <form action="/ammo/<%=ammo.caliber%>/<%=ammo.id%>?_method=PUT" method="POST">
 
     <label for="caliber">Caliber</label>
@@ -37,3 +37,5 @@
     <input type="submit" value="Confirm Changes">
 
 </form>
+
+<%- include('./partials/footer.ejs') %>

@@ -89,7 +89,7 @@ router.put('/:caliber/:id', (req, res) => {
     console.log("req.params.id:", req.params.id)
     Ammo.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, ammo) => {
         console.log(ammo)
-        res.redirect('/ammo');
+        res.redirect('/ammo/'+req.params.caliber+'/'+req.params.id);
     }) 
 })
 
