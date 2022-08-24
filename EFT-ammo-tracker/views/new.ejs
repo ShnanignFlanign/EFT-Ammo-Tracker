@@ -1,3 +1,35 @@
 <%-include('./partials/header.ejs')%>
-<h1>New Page</h1>
+<h1>Create New Cartridge</h1>
+<form action="/ammo" method="POST">
+
+    <label for="caliber">Caliber</label>
+    <input type="text" name="caliber" id="caliber">
+    
+    <label for="cartridge">Cartridge</label>
+    <input type="text" name="cartridge" id="cartridge">
+    
+    <label for="damage">Damage</label>
+    <input type="text" name="damage" id="damage">
+    
+    <label for="penpower">Penetration Power</label>
+    <input type="text" name="penpower" id="penpower">
+    
+    <label for="velocity">Bullet Velocity</label>
+    <input type="text" name="velocity" id="velocity">
+   
+    <label for="fragmentation">Fragmentation Chance</label>
+    <input type="text" name="fragmentation" id="fragmentation">
+   
+    <label for="img">Image Link (make sure the link ends with '.png'</label>
+    <input type="text" name="img" id="img">
+   
+    <label for="description">Description</label>
+    <input type="textbox" name="description" id="description">
+   
+    <label for="purchasable">Purchasable from Traders</label>
+    <input type="checkbox" name="purchasable" id="purchasable">
+
+    <input type="submit" value="Submit">
+
+</form>
 <%- include('./partials/footer.ejs') %>

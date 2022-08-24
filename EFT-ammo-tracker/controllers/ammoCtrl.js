@@ -106,11 +106,10 @@ router.post('/', (req, res) => {
             console.log("This happened:", err)
             res.send(err)
         } else {
-            res.redirect('/ammo/:caliber')
-            console.log(createdAmmo)
+            res.redirect('/ammo')
+            console.log("Created ammo:",createdAmmo)
         }
     });
-    
 });
 
 router.delete('/:caliber/:id', (req, res) => {
