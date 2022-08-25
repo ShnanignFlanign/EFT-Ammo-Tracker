@@ -2,16 +2,19 @@
 <h1 class="display-4">Cartridge List</h1>
 <div class="container" style="width:60%">
    
-    <table class="table table-bordered">
+    <table class="table table-bordered align-middle">
         <thead>
             <tr>
-                <th scope="col"><%=caliber%> Cartridges</th>
+                <th scope="col" colspan="2"><%=caliber%> Cartridges</th>
+                <!-- <th scope="col">Image</th> -->
             </tr>
         </thead>
         <tbody>
             <%for(let i = 0; i < foundAmmo.length; i++) { %>
             <tr>
-                <td><a class="btn btn-outline-secondary" style="width:100%" href="/ammo/<%=foundAmmo[i].caliber%>/<%=foundAmmo[i].id%>"><%=foundAmmo[i].cartridge%></a></td>
+                <td><a class="btn btn-light" style="width:50%" href="/ammo/<%=foundAmmo[i].caliber%>/<%=foundAmmo[i].id%>"><%=foundAmmo[i].cartridge%></a></td>
+                <td>
+                    <a class="btn btn-light"  href="/ammo/<%=foundAmmo[i].caliber%>/<%=foundAmmo[i].id%>"><img src="<%=foundAmmo[i].img%>" class="img-fluid rounded img-thumbnail" style="max-width: 64px"></a></td>
             </tr>
             <%}%>
 
