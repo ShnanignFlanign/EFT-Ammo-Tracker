@@ -6,7 +6,7 @@
             <a class="btn btn-outline-secondary" style="width:100%" href="/ammo/<%=calArr[i].caliber%>"><%=calArr[i].caliber%> Cartridges</a>
                 <div class="list-group">
             <%for(let j = 0; j < calArr[i].bullets.length; j++){%>
-                    <li class="list-group-item"><a class="btn btn-light" href="/ammo/<%=calArr[i].caliber%>/<%=calArr[i].bullets[j].id%>"><%=calArr[i].bullets[j].cartridge%></a>
+                    <li class="list-group-item"><a class="btn btn-light" style="width:50%" href="/ammo/<%=calArr[i].caliber%>/<%=calArr[i].bullets[j].id%>"><%=calArr[i].bullets[j].cartridge%></a>
                     </li>
                 <%}%>
                 </div>

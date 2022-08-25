@@ -1,9 +1,23 @@
 <%-include('./partials/header.ejs')%>
-<h1 class="display-4"><%=caliber%> Cartridges</h1>
+<h1 class="display-4">Cartridge List</h1>
 <div class="container" style="width:60%">
-    <%for(let i = 0; i < foundAmmo.length; i++) { %>
-        <li class="list-group-item"><a class="btn btn-outline-secondary col-6" href="/ammo/<%=foundAmmo[i].caliber%>/<%=foundAmmo[i].id%>"><%=foundAmmo[i].cartridge%></a>
-        </li>
-    <%}%>
+   
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col"><%=caliber%> Cartridges</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%for(let i = 0; i < foundAmmo.length; i++) { %>
+            <tr>
+                <td><a class="btn btn-outline-secondary" style="width:100%" href="/ammo/<%=foundAmmo[i].caliber%>/<%=foundAmmo[i].id%>"><%=foundAmmo[i].cartridge%></a></td>
+            </tr>
+            <%}%>
+
+        </tbody>
+    </table>
+
 </div>
+
 <%- include('./partials/footer.ejs') %>
