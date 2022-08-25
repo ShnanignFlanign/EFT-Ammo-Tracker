@@ -3,6 +3,9 @@ const app = express();
 const methodOverride = require('method-override');
 const ammoCtrl = require('./controllers/ammoCtrl.js');
 
+
+//process.env.port needed for heroku deployment. put it here
+
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/MongooseStore');
 mongoose.connection.once('open', () => {

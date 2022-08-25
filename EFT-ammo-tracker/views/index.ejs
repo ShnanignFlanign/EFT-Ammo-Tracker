@@ -1,15 +1,15 @@
 <%-include('./partials/header.ejs')%>
-<h1>Caliber List</h1>
-    <div class="container">
+<h1 class="display-4">Caliber List</h1>
+    <div class="container" style="width:60%">
 <% for(let i = 0; i < calArr.length; i++) { %>
         <div class="col">
-            <a class="btn btn-secondary" href="/ammo/<%=calArr[i].caliber%>"><%=calArr[i].caliber%></a>
-                <ul class="list-group list-group-flush">
+            <a class="btn btn-outline-secondary" style="width:100%" href="/ammo/<%=calArr[i].caliber%>"><%=calArr[i].caliber%> Cartridges</a>
+                <div class="list-group">
             <%for(let j = 0; j < calArr[i].bullets.length; j++){%>
-                    <li class="list-group-item"><a class="btn btn-outline-secondary" href="/ammo/<%=calArr[i].caliber%>/<%=calArr[i].bullets[j].id%>"><%=calArr[i].bullets[j].cartridge%></a>
+                    <li class="list-group-item"><a class="btn btn-light" href="/ammo/<%=calArr[i].caliber%>/<%=calArr[i].bullets[j].id%>"><%=calArr[i].bullets[j].cartridge%></a>
                     </li>
                 <%}%>
-                </ul>
+                </div>
         </div>
 <%}%>
     </div>

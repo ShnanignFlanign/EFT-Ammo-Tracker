@@ -1,11 +1,9 @@
 <%-include('./partials/header.ejs')%>
-<h1><%=caliber%> Cartridges</h1>
-<ul class="list-group">
+<h1 class="display-4"><%=caliber%> Cartridges</h1>
+<div class="container" style="width:60%">
     <%for(let i = 0; i < foundAmmo.length; i++) { %>
-
-    <li class="list-group-item"><%=foundAmmo[i].cartridge%>
-    <a href="/ammo/<%=foundAmmo[i].caliber%>/<%=foundAmmo[i].id%>">Stats</a>
-    </li>
+        <li class="list-group-item"><a class="btn btn-outline-secondary col-6" href="/ammo/<%=foundAmmo[i].caliber%>/<%=foundAmmo[i].id%>"><%=foundAmmo[i].cartridge%></a>
+        </li>
     <%}%>
-</ul>
+</div>
 <%- include('./partials/footer.ejs') %>

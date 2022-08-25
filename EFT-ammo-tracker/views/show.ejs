@@ -1,21 +1,64 @@
 <%-include('./partials/header.ejs')%>
-<h1><%=ammo.caliber%> <%=ammo.cartridge%></h1>
-<img src="<%=ammo.img%>" class="img-fluid rounded img-thumbnail" style="max-width: 64px" >
-<p><%=ammo.description%></p>
-<ul>
-    <div>Penetration Power: <%=ammo.penpower%></div>
-    <div>Damage: <%=ammo.damage%></div>
-    <div>Muzzle Velocity: <%=ammo.velocity%>m/s</div>
-    <div>Fragmentation Chance: <%=ammo.fragmentation%>%</div>
-    <%if (ammo.purchasable === true) {%>
-        <div>This ammo is purchasable from traders.</div>
-    <%} else if (ammo.purchasable !== true){%>
-        <div>This ammo is not purchasable from traders.</div>
-    <%}%>
-    <a href="/ammo/<%=ammo.caliber%>/<%=ammo.id%>/edit">Edit</a>
-    <form action="/ammo/<%=ammo.caliber%>/<%=ammo.id%>?_method=DELETE" method="POST">
-        <input type="submit" value="DELETE">
-    </form>
-</ul>
+<h1 class="display-4"><%=ammo.caliber%> <%=ammo.cartridge%></h1>
+
+
+
+<div class="container" style="width:60%">
+    <table class="table table-light">
+        <thead>
+            <tr>
+                <th scope="col"><%=ammo.cartridge%></th>
+                <th scope="col"><img src="<%=ammo.img%>" class="img-fluid rounded img-thumbnail" style="max-width: 64px"></th>
+            </tr>
+            <tr class="table-secondary">
+                <th scope="col">Ammunition Stat</th>
+                <th scope="col">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>Penetration Power:</td> 
+                <td><%=ammo.penpower%></td>
+            </tr>
+            <tr>
+                <td>Damage: </td> 
+                <td> <%=ammo.damage%></td>
+            </tr>
+            <tr>
+                <td>Muzzle Velocity: </td> 
+                <td><%=ammo.velocity%>m/s</td>
+            </tr>
+            <tr>
+                <td>Fragmentation Chance: </td> 
+                <td><%=ammo.fragmentation%>%</td>
+            </tr>
+            <tr>
+                <td>Purchasable From Traders: </td>
+                <%if (ammo.purchasable === true) {%>
+                    <td>Yes</td>
+                <%} else if (ammo.purchasable !== true){%>
+                    <td>No</td>
+                <%}%>
+            </tr> 
+        </tbody>
+    </table>
+
+    <p class="lead"><%=ammo.description%></p>
+    
+    
+    
+</div>
+
+<table class="table">
+    <tr><a class="btn btn-outline-secondary" href="/ammo/<%=ammo.caliber%>/<%=ammo.id%>/edit">Edit</a>
+    </tr>
+    <tr>
+        <form action="/ammo/<%=ammo.caliber%>/<%=ammo.id%>?_method=DELETE" method="POST">
+            <input class="btn btn-outline-secondary" type="submit" value="DELETE">
+        </form>
+    </tr>
+</table>
+
 
 <%- include('./partials/footer.ejs') %>
