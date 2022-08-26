@@ -1,41 +1,76 @@
 <%-include('./partials/header.ejs')%>
-<h1>Edit <%=ammo.cartridge%> Stats</h1>
+<h1 class="display-4">Edit <%=ammo.cartridge%> Stats</h1>
 
-<form action="/ammo/<%=ammo.caliber%>/<%=ammo.id%>?_method=PUT" method="POST">
+<div class="container text-start" style="width:60%">
 
-    <label for="caliber">Caliber</label>
-    <input type="text" name="caliber" id="caliber" value="<%=ammo.caliber%>">
-    
-    <label for="cartridge">Cartridge</label>
-    <input type="text" name="cartridge" id="cartridge" value="<%=ammo.cartridge%>">
-    
-    <label for="damage">Damage</label>
-    <input type="text" name="damage" id="damage" value="<%=ammo.damage%>">
-    
-    <label for="penpower">Penetration Power</label>
-    <input type="text" name="penpower" id="penpower" value="<%=ammo.penpower%>">
-    
-    <label for="velocity">Bullet Velocity</label>
-    <input type="text" name="velocity" id="velocity" value="<%=ammo.velocity%>">
-   
-    <label for="fragmentation">Fragmentation Chance</label>
-    <input type="text" name="fragmentation" id="fragmentation" value="<%=ammo.fragmentation%>">
-   
-    <label for="img">Image Link (make sure the link ends with '.png'</label>
-    <input type="text" name="img" id="img" value="<%=ammo.img%>">
-   
-    <label for="description">Description</label>
-    <input type="text" name="description" id="description" value="<%=ammo.description%>">
-   
-    <label for="purchasable">Purchasable from Traders</label>
-    <input type="checkbox" name="purchasable" id="purchasable" 
-        <% if(ammo.purchasable === true){%>
-            checked
-        <%}%>
-    >
+    <form action="/ammo/<%=ammo.caliber%>/<%=ammo.id%>?_method=PUT" method="POST">
 
-    <input type="submit" value="Confirm Changes">
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label" for="caliber">Caliber:</label>
+                <input class="form-control" type="text" name="caliber" id="caliber" value="<%=ammo.caliber%>">
+            </div>
+            
+            <div class="col-md-6"> 
+                <label class="form-label" for="cartridge">Cartridge:</label>
+                <input class="form-control" type="text" name="cartridge" id="cartridge" value="<%=ammo.cartridge%>">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label" for="damage">Damage:</label>
+                <input class="form-control" type="text" name="damage" id="damage" value="<%=ammo.damage%>">
+            </div>
+            
+            <div class="col-md-6">
+                <label class="form-label" for="penpower">Penetration Power:</label>
+                <input class="form-control" type="text" name="penpower" id="penpower" value="<%=ammo.penpower%>">
+            </div>
+        </div>
 
-</form>
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label" for="velocity">Bullet Velocity:</label>
+                <input class="form-control" type="text" name="velocity" id="velocity" value="<%=ammo.velocity%>">
+            </div>
+            
+            <div class="col-md-6">
+                <label for="fragmentation">Fragmentation Chance:</label>
+                <input class="form-control" type="text" name="fragmentation" id="fragmentation" value="<%=ammo.fragmentation%>">
+            </div>
+        </div>
+        
+        <div class="mb-3 text-center">
+            <label class="form-label" for="img">Image Link (make sure the link ends with '.png'):</label>
+            <textarea class="form-control"  name="img" id="img" placeholder="<%=ammo.img%>" row="2"></textarea>
+        </div>
+        
+        <div class="mb-3 text-center">
+            <label class="form-label" for="description">Description:</label>
+            <textarea class="form-control" name="description" id="description" placeholder="<%=ammo.description%>" rows="4"></textarea>
+        </div>
+
+        <div class="row">
+            <div class="col-auto">
+                <div class="form-check">
+                    <label class="form-check-label" for="purchasable">Purchasable from Traders</label>
+                    <input class="form-check-input" type="checkbox" name="purchasable" id="purchasable" 
+                        <% if(ammo.purchasable === true){%>
+                            checked
+                        <%}%>
+                    >
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <input class="btn btn-primary" type="submit" value="Confirm Changes">
+            </div>
+        </div>    
+
+            
+
+    </form>
+</div>
 
 <%- include('./partials/footer.ejs') %>

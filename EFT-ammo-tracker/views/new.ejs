@@ -1,35 +1,64 @@
 <%-include('./partials/header.ejs')%>
-<h1>Create New Cartridge</h1>
-<form action="/ammo" method="POST">
+<h1 class="display-4">Create New Cartridge</h1>
 
-    <label for="caliber">Caliber</label>
-    <input type="text" name="caliber" id="caliber">
-    
-    <label for="cartridge">Cartridge</label>
-    <input type="text" name="cartridge" id="cartridge">
-    
-    <label for="damage">Damage</label>
-    <input type="text" name="damage" id="damage">
-    
-    <label for="penpower">Penetration Power</label>
-    <input type="text" name="penpower" id="penpower">
-    
-    <label for="velocity">Bullet Velocity</label>
-    <input type="text" name="velocity" id="velocity">
-   
-    <label for="fragmentation">Fragmentation Chance</label>
-    <input type="text" name="fragmentation" id="fragmentation">
-   
-    <label for="img">Image Link (make sure the link ends with '.png'</label>
-    <input type="text" name="img" id="img">
-   
-    <label for="description">Description</label>
-    <input type="textbox" name="description" id="description">
-   
-    <label for="purchasable">Purchasable from Traders</label>
-    <input type="checkbox" name="purchasable" id="purchasable">
+<div class="container text-start" style="width:60%">
 
-    <input type="submit" value="Submit">
+    <form action="/ammo" method="POST">
 
-</form>
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label" for="caliber">Caliber:</label>
+                <input class="form-control" type="text" name="caliber" id="caliber">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="cartridge">Cartridge:</label>
+                <input class="form-control" type="text" name="cartridge" id="cartridge">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label" for="damage">Damage:</label>
+                <input class="form-control" type="text" name="damage" id="damage">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="penpower">Penetration Power:</label>
+                <input class="form-control" type="text" name="penpower" id="penpower">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label" for="velocity">Bullet Velocity:</label>
+                <input class="form-control" type="text" name="velocity" id="velocity">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="fragmentation">Fragmentation Chance:</label>
+                <input class="form-control" type="text" name="fragmentation" id="fragmentation">
+            </div>
+        </div>
+        
+        <div class="mb-3 text-center">
+            <label class="form-label" for="img">Image Link (make sure the link ends with '.png'):</label>
+            <input class="form-control" type="text" name="img" id="img" row="1">
+        </div>
+
+        <div class="mb-3 text-center">
+            <label class="form-label" for="description">Description:</label>
+            <textarea class="form-control" name="description" id="description" row="4"></textarea>
+        </div>
+        
+        <div class="row">
+            <div class="col-auto">
+                <label class="form-check-label" for="purchasable">Purchasable from Traders:</label>
+                <input class="form-check-input" type="checkbox" name="purchasable" id="purchasable">
+            </div>
+            <div class="col-auto">
+                <input class="btn btn-primary" type="submit" value="Create Cartridge">
+            </div>
+        </div>
+
+    </form>
+</div>
+
 <%- include('./partials/footer.ejs') %>
