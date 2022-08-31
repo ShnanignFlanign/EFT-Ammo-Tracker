@@ -8,19 +8,21 @@ router.get('/', (req, res) => {
         //array of caliber objects here, each with their own array of bullets. place each bullet in corresponding object's array of bullets
         let calArr = [];
         for(element of allAmmo){
-            // console.log(element.caliber)
-            if(!calArr.includes({caliber: element.caliber, bullets:[]})){
+            console.log(element.caliber)
+            if(!calArr.includes({caliber: element.caliber})){
                 calArr.push({caliber: element.caliber, bullets:[]});
             }
         }
+        // console.log(calArr)
         for(let i = 0; i < calArr.length; i++) {
             for(let j = 0; j < calArr.length; j++)
             if (i!==j) {
-                if(calArr[i].caliber === calArr[j].caliber){
-                    calArr.splice(i, 1)
+                if(calArr[j].caliber === calArr[i].caliber){
+                    calArr.splice(j, 1)
                 }
             }
         }
+        // console.log(calArr)
         for(element of allAmmo){
             for(let i = 0; i < calArr.length; i++){
                 if(element.caliber === calArr[i].caliber){
