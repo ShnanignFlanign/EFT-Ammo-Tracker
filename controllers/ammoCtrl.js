@@ -13,16 +13,16 @@ router.get('/', (req, res) => {
                 calArr.push({caliber: element.caliber, bullets:[]});
             }
         }
-        // console.log(calArr)
+        console.log(calArr)
         for(let i = 0; i < calArr.length; i++) {
             for(let j = 0; j < calArr.length; j++)
-            if (i!==j) {
+            // if (i!==j) {
                 if(calArr[j].caliber === calArr[i].caliber){
                     calArr.splice(j, 1)
                 }
-            }
+            // }
         }
-        // console.log(calArr)
+        console.log(calArr)
         for(element of allAmmo){
             for(let i = 0; i < calArr.length; i++){
                 if(element.caliber === calArr[i].caliber){
